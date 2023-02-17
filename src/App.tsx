@@ -1,7 +1,61 @@
+import { EuiBottomBar, EuiButton, EuiButtonEmpty, EuiCode, EuiFlexGroup, EuiFlexItem, EuiIcon, EuiText, useEuiTheme } from "@elastic/eui";
+import { css } from "@emotion/react";
+import { useState } from "react";
 import { Button } from "./components/Button";
 
 function App() {
-  return <Button />;
+  const [showBar, setShowBar] = useState(false);
+
+  const button = (
+    <EuiButton color="primary" onClick={() => setShowBar((show) => !show)}>
+      Toggle appearance of the bottom bar
+    </EuiButton>
+  );
+
+  let bottomBar;
+  if (showBar) {
+    bottomBar = (
+      <EuiBottomBar>
+        <EuiFlexGroup justifyContent="spaceBetween">
+          <EuiFlexItem grow={false}>
+            <EuiFlexGroup gutterSize="s">
+              <EuiFlexItem grow={false}>
+                <EuiButton color="text" size="s" iconType="help">
+                  Help
+                </EuiButton>
+              </EuiFlexItem>
+              <EuiFlexItem grow={false}>
+                <EuiButton color="text" size="s" iconType="user">
+                  Add user
+                </EuiButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiFlexItem>
+          <EuiFlexItem grow={false}>
+            <EuiFlexGroup gutterSize="s">
+              <EuiFlexItem grow={false}>
+                <EuiButtonEmpty color="text" size="s" iconType="cross">
+                  Discard
+                </EuiButtonEmpty>
+              </EuiFlexItem>
+              <EuiFlexItem grow={false}>
+                <EuiButton color="primary" fill size="s" iconType="check">
+                  Save
+                </EuiButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </EuiBottomBar>
+    );
+  }
+
+  return (
+    <div>
+      {button}
+      {bottomBar}
+    </div>
+  );
 }
 
 export default App;

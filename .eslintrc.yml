@@ -12,6 +12,7 @@ parserOptions:
 
 rules:
   "import/no-unresolved": off
+  "unicorn/filename-case": off
 overrides:
   - files: "**/*.@(stories|test).tsx"
     rules:
